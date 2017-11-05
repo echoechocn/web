@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const { mix } = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +11,27 @@ let mix = require('laravel-mix');
  |
  */
 
+mix.webpackConfig({
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
+      },
+    ]
+  }
+});
+
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+
+   // admin
+   .js('resources/assets/js/admin/change_captcha.js', 'public/js/admin')
+   .js('resources/assets/js/admin/login.js', 'public/js/admin')
+  .js('resources/assets/js/admin/home.js', 'public/js/admin')
+  .js('resources/assets/js/admin/main.js', 'public/js/admin')
+
+  .js('resources/assets/js/admin/test.js', 'public/js/admin')
+  .js('resources/assets/js/admin/editor.js', 'public/js/admin')
+
+  .js('resources/assets/js/admin/question/program.js', 'public/js/admin/question')
+  .js('resources/assets/js/admin/question/program_edit.js', 'public/js/admin/question');

@@ -1,4 +1,16 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+  "/js/admin/login.js": "/js/admin/login.js",
+  "/js/app.js": "/js/app.js",
+  "/css/app.css": "/css/app.css",
+  "/css/admin/login.css": "/css/admin/login.css",
+  "/js/admin/change_captcha.js": "/js/admin/change_captcha.js",
+  "/js/admin/question_list.js": "/js/admin/question_list.js",
+  "/js/admin/question/question_list.js": "/js/admin/question/question_list.js",
+  "/js/admin/home.js": "/js/admin/home.js",
+  "/js/admin/question/program.js": "/js/admin/question/program.js",
+  "/js/admin/main.js": "/js/admin/main.js",
+  "/js/admin/question/program_edit.js": "/js/admin/question/program_edit.js",
+  "/js/admin/question/test.js": "/js/admin/question/test.js",
+  "/js/admin/test.js": "/js/admin/test.js",
+  "/js/admin/editor.js": "/js/admin/editor.js"
 }

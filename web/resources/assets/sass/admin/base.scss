@@ -1,0 +1,41 @@
+hr {
+  background-color: #ccc;
+  height: 1px;
+  border: none;
+  margin: 8px 0 10px;
+}
+
+.operations {
+  min-height: 35px;
+  position: relative;
+}
+
+.breadcrumb {
+  color: #666;
+  font-size: 14px;
+  
+  
+  .breadcrumb-item {
+    display: inline-block;
+    text-decoration: none
+  }
+  .divider {
+    display: inline-block;    
+    padding: 0 5px;
+  }
+}
+
+#app{
+
+  .el-input {
+    width: 300px;
+  }
+
+  .el-form-item__label{
+
+  }
+
+  .ql-picker-label, .ql-formats{
+    line-height: 22px;;
+  }
+}

@@ -13,5 +13,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class BaseModelWithoutTime extends Model
 {
+    use Uuid;
+
     public $timestamps = false;
+
 }

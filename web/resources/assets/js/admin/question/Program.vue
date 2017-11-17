@@ -13,6 +13,7 @@
 
         <el-table
         :data="question_list"
+        border
         stripe
         style="width: 100%">
             <el-table-column prop="pid" label="PID" width="100"></el-table-column>

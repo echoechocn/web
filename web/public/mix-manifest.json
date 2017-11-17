@@ -12,5 +12,16 @@
   "/js/admin/question/program_edit.js": "/js/admin/question/program_edit.js",
   "/js/admin/question/test.js": "/js/admin/question/test.js",
   "/js/admin/test.js": "/js/admin/test.js",
-  "/js/admin/editor.js": "/js/admin/editor.js"
+  "/js/admin/editor.js": "/js/admin/editor.js",
+  "/js/admin/course/courses.js": "/js/admin/course/courses.js",
+  "/js/admin/course/course.js": "/js/admin/course/course.js",
+  "/js/admin/course/classes.js": "/js/admin/course/classes.js",
+  "/js/admin/course/class.js": "/js/admin/course/class.js",
+  "/js/admin/course/course_setting.js": "/js/admin/course/course_setting.js",
+  "/js/admin/course/class_setting.js": "/js/admin/course/class_setting.js",
+  "/js/admin/course/programs.js": "/js/admin/course/programs.js",
+  "/js/admin/course/program_edit.js": "/js/admin/course/program_edit.js",
+  "/js/admin/course/course_content.js": "/js/admin/course/course_content.js",
+  "/js/admin/course/content.js": "/js/admin/course/content.js",
+  "/js/home/course.js": "/js/home/course.js"
 }

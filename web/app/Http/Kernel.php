@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'admin_auth' => \App\Http\Middleware\AdminAuthMiddleware::class,
         'admin_login' => \App\Http\Middleware\AdminLoginMiddleware::class,
         'admin_logged' => \App\Http\Middleware\AdminLoggedMiddleware::class,
+        'home_logged' => \App\Http\Middleware\HomeLoggedMiddleware::class,
     ];
 }

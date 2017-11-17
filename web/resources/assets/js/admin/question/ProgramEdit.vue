@@ -275,7 +275,6 @@
           let that = this;
           this.$refs.formdata.validate((valid) => {
               if (valid){
-                  var that = this;
                   axios.post('/question/program_add', this.formdata)
                     .then((response) => {
                         alert('保存成功')

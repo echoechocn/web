@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 class AdminLoginController extends Controller
 {
     const S_K = 'IAdh8NS8Hd0K13bdm';
-    const expire_time = 86400;
+    const expire_time = 43200;
 
     public function show(Request $request){
         $builder = new CaptchaBuilder;

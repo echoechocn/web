@@ -24,7 +24,11 @@ mix.webpackConfig({
 
 mix.js('resources/assets/js/app.js', 'public/js')
 
-   // admin
+  // www
+  .js('resources/assets/js/home/course.js', 'public/js/home')
+
+
+  // admin
    .js('resources/assets/js/admin/change_captcha.js', 'public/js/admin')
    .js('resources/assets/js/admin/login.js', 'public/js/admin')
   .js('resources/assets/js/admin/home.js', 'public/js/admin')
@@ -32,6 +36,15 @@ mix.js('resources/assets/js/app.js', 'public/js')
 
   .js('resources/assets/js/admin/test.js', 'public/js/admin')
   .js('resources/assets/js/admin/editor.js', 'public/js/admin')
+
+
+  .js('resources/assets/js/admin/course/courses.js', 'public/js/admin/course')
+  .js('resources/assets/js/admin/course/classes.js', 'public/js/admin/course')
+  .js('resources/assets/js/admin/course/course_setting.js', 'public/js/admin/course')
+  .js('resources/assets/js/admin/course/programs.js', 'public/js/admin/course')
+  .js('resources/assets/js/admin/course/class_setting.js', 'public/js/admin/course')
+  .js('resources/assets/js/admin/course/program_edit.js', 'public/js/admin/course')
+  .js('resources/assets/js/admin/course/content.js', 'public/js/admin/course')
 
   .js('resources/assets/js/admin/question/program.js', 'public/js/admin/question')
   .js('resources/assets/js/admin/question/program_edit.js', 'public/js/admin/question');

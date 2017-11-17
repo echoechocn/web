@@ -80,6 +80,17 @@
                   url: '/question/choice'
                 },
               ]
+            },
+            {
+              index: '3',
+              title: '课程管理',
+              children: [
+                {
+                  index: '4',
+                  title: '课程列表',
+                  url: '/course/courses'
+                }
+              ]
             }
           ]
         }

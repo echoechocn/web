@@ -25,4 +25,8 @@ class Salt
         }
         return $string;
     }
+
+    public static function generateSha256(){
+        return '$5$' . self::generate(16);
+    }
 }

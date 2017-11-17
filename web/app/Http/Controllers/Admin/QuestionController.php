@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Admin;
 
 use \App\Http\Controllers\Controller;
+use App\Http\Models\CourseProblemRel;
 use App\Http\Models\Privilege;
 use App\Http\Models\ProblemCase;
 use App\Http\Models\ProgramProblem;
@@ -18,8 +19,7 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller{
 
-    public function program(Request $request){
-        $problem_list = ProgramProblem::orderBy('problem_id', 'desc')->get();
+    private function listToData($problem_list = []){
         $data = [];
         foreach ($problem_list as $problem){
             $data[] = array(
@@ -30,7 +30,26 @@ class QuestionController extends Controller{
                 'status' => $problem->defunct == 'Y' ? '可用' : '不可用'
             );
         }
+        return $data;
+    }
+
+    public function program(Request $request){
+        $problem_list = ProgramProblem::orderBy('problem_id', 'desc')->get();
+        $data = $this->listToData($problem_list);
         return response($data);
+    }
+
+    public function programInCourse(Request $request, $course_id=0, $page=0){
+        $rel = CourseProblemRel::where('course_id', $course_id)->orderBy('problem_id', 'desc')->forPage($page)->get();
+        $list = [];
+        foreach ($rel as $r) {
+            $problem = ProgramProblem::find($r->problem_id);
+            if (null == $problem) {
+                continue;
+            }
+            $list[] = $problem;
+        }
+        return response($this->listToData($list));
     }
 
     /**
@@ -250,6 +269,14 @@ class QuestionController extends Controller{
         }
 
         $this->addTestCase($request, $problem, $OJ_DATA);
+
+        // 如果有关联的课程，添加课程管理数据
+        if ($request->input('course_id')){
+            $rel = new CourseProblemRel();
+            $rel->course_id = $request->input('course_id');
+            $rel->problem_id = $pid;
+            $rel->save();
+        }
 
         return response('add success, pid:' . $problem->problem_id);
     }

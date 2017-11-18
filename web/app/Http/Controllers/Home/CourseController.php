@@ -148,7 +148,8 @@ class CourseController extends Controller
         return array(
             'result' => '-1',  // 未提交
             'source' => '',
-            'language' => 7   // 默认使用php
+            'language' => 7,   // 默认使用php
+            'cases' => []
         );
     }
 

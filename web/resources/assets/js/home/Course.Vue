@@ -55,12 +55,16 @@
     padding: 15px 30px;
 }
 
-pre.sample-input, pre.sample-output {
+pre.sample-input, pre.sample-output, pre.ql-syntax {
     background-color: #23241f;
     color: #f8f8f2;
     overflow: visible;
     padding: 5px;
     border-radius: 3px;
+}
+
+.cell pre{
+    margin: 0;
 }
 
 .el-table .error{
@@ -144,6 +148,8 @@ background: #f0f9eb;
                     <pre class="sample-input">{{(item.sample_input == "" || item.sample_input == null) ? "（无）" : item.sample_input }}</pre>
                     <h4>输出样例</h4>
                     <pre class="sample-output">{{item.sample_output}}</pre>
+                    <h4>提示</h4>
+                    <div class="hint" v-html="item.hint"></div>
                     <div>
                         <codemirror
                             v-if="item.show_editor"
@@ -190,21 +196,27 @@ background: #f0f9eb;
                             </el-table-column>
 
                             <el-table-column
-                            prop="input"
                             label="输入"
                             >
+                                <template slot-scope="scope">
+                                    <pre>{{scope.row.input}}</pre>
+                                </template>
                             </el-table-column>
 
                             <el-table-column
-                            prop="output"
                             label="期望输出"
                             >
+                                <template slot-scope="scope">
+                                    <pre>{{scope.row.output}}</pre>
+                                </template>
                             </el-table-column>
 
                             <el-table-column
-                            prop="user_output"
                             label="程序输出"
                             >
+                                <template slot-scope="scope">
+                                    <pre>{{scope.row.user_output}}</pre>
+                                </template>
                             </el-table-column>
 
                         </el-table>

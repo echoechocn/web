@@ -97,7 +97,9 @@ background: #f0f9eb;
                 <el-menu-item
                         v-for="section in chapter.children"
                         :key="section.id"
-                        :index="section.id">
+                        :index="section.id"
+                        @click="openSection(chapter.id, section.id)"
+                        >
                     {{ section.title }}
                 </el-menu-item>
               </el-submenu>
@@ -391,6 +393,9 @@ export default {
     }, 2500);
   },
   methods: {
+      openSection(chapter_id, section_id){
+          window.location.href = "/course/" + this.course_id + "/c/" + chapter_id + "/s/" + section_id;
+      },
       getSolutionResult(){
         let vm = this;
 

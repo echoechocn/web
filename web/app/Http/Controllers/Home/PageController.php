@@ -32,7 +32,7 @@ class PageController extends Controller
 
             foreach ($sections as $section){
                 $pages = NodeInfo::getPages($section->id);
-                if (empty($pages)){
+                if ($pages->isEmpty()){
                     continue;
                 }
                 return redirect('/course/' . $course_id . '/c/' . $chapter->id . '/s/' . $section->id . '/p/' . $pages[0]->id);
@@ -44,7 +44,7 @@ class PageController extends Controller
 
     public function courseSection(Request $request, $course_id, $chapter_id, $section_id){
         $pages = NodeInfo::getPages($section_id);
-        if (empty($pages)){
+        if ($pages->isEmpty()){
             return $this->emptyCourse();
         }
         return redirect('/course/' . $course_id . '/c/' . $chapter_id . '/s/' . $section_id . '/p/' . $pages[0]->id);

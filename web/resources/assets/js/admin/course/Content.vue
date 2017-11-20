@@ -511,7 +511,6 @@ export default {
           }
       },
       addSection(){
-          // TODO
           let vm = this;
           axios.post('/course/content/add_section', {
               'course_id': vm.course_id,
@@ -523,7 +522,7 @@ export default {
                 return false;
             }
             chapter.children.push({
-                id: response.id,
+                id: response.data.id,
                 title: vm.new_section_name
             });
             vm.new_section_visible = false;

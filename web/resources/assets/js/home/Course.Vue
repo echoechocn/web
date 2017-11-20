@@ -275,6 +275,10 @@ export default {
               {
                   type: 6,
                   name: 'python3'
+              },
+              {
+                  type: 16,
+                  name: 'js'
               }
           ],
 

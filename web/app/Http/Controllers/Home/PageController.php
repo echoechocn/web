@@ -23,7 +23,6 @@ class PageController extends Controller
         if (empty($chapters)){
             return $this->emptyCourse();
         }
-
         foreach ($chapters as $chapter){
             $sections = NodeInfo::getSections($chapter->id);
             if (empty($sections)){

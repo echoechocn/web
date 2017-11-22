@@ -113,7 +113,7 @@ class CourseController extends Controller
                     );
 
                     $user_id = $request->session()->get('user_id');
-                    $item['user_solution'] = $this->getUserProblemStatus($user_id, $program->problem_id);
+                    $item['user_solution'] = $this->getUserProblemStatus($request, $user_id, $program->problem_id);
                     break;
             }
             $data[] = $item;
@@ -133,11 +133,11 @@ class CourseController extends Controller
 
     public function requestUserProblemStatus(Request $request){
         return response(json_encode(
-            $this->getUserProblemStatus($request->session()->get('user_id'), $request->input('problem_id'))
+            $this->getUserProblemStatus($request, $request->session()->get('user_id'), $request->input('problem_id'))
         ));
     }
 
-    private function getUserProblemStatus($user_id, $problem_id){
+    private function getUserProblemStatus(Request $request, $user_id, $problem_id){
         $solutions = Solution::where(['user_id' => $user_id, 'problem_id' => $problem_id])
             ->orderBy('solution_id', 'desc')->take(1)->get();
 
@@ -145,10 +145,12 @@ class CourseController extends Controller
             return $this->getSolutionStatus($solution);
         }
 
+        $language = $request->session()->has('language') ? $request->session()->get('language') : 7;
+
         return array(
             'result' => '-1',  // 未提交
             'source' => '',
-            'language' => 7,   // 默认使用php
+            'language' => $language,   // 默认使用php
             'cases' => []
         );
     }
@@ -209,6 +211,8 @@ class CourseController extends Controller
         $source_code->solution_id = $solution->solution_id;
         $source_code->source = $request->input('source');
         $source_code->save();
+
+        $request->session()->put("language", $solution->language);
 
         return response(json_encode(array(
             'solution_id' => $solution->solution_id

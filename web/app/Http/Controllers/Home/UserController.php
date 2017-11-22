@@ -18,6 +18,7 @@ use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
+
     public function createUser(Request $request){
         $pass = $request->input('pass');
         if ($pass != 'ASIi03nc9DFSN044jf0FDSFJkfk09342KCv0jvf0j'){
@@ -46,7 +47,8 @@ class UserController extends Controller
 
         return response(json_encode(array(
             "password" => $password,
-            "user_name" => $user_name
+            "user_name" => $user_name,
+            "user_id" => $user_id
         )));
     }
 

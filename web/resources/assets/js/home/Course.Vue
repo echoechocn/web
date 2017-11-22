@@ -444,7 +444,9 @@ export default {
                   type: 'success'
               });
               item.show_editor = false;
-              item.user_solution.result = 0;
+              setTimeout(function(){
+                item.user_solution.result = 0;
+              }, 1000);
           })
           .catch((error) => {
               vm.$message({

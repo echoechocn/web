@@ -5,14 +5,14 @@
 .menu{
     display: inline-block;
     height: 100%;
-    width: 200px;
+    width: 250px;
     background-color: rgb(110, 120, 130);
 }
 .content {
     display: inline-block;
-    padding: 0 10px;
+    padding: 0 40px;
     height: 100%;
-    width: calc(100% - 229px);
+    width: calc(100% - 339px);
     background-color: #fafafa;
     vertical-align: top;
     overflow: scroll;
@@ -23,8 +23,8 @@
 }
 .progress {
     width: 100%;
+    margin: 0 auto;
     height: 30px;
-    background-color: #e8e8e8;
     border-radius: 3px;
 }
 .progress-item {
@@ -32,17 +32,19 @@
     padding: 5px 10px;
     line-height: 30px;
     color: #555599;
+    background-color: #eef1f8;
     border-radius: 3px;
+    margin-right: 10px;
 }
 .progress-item:hover {
-    background-color: #d8d8d8;
+    background-color: #c8d8e8;
 }
 .progress-item.active {
-    background-color: #d8d8d8;
+    background-color: #c8d8e8;
 }
 
 .contents {
-    margin-top: 10px;
+    padding: 20px 0;
     font-size: 15px;
 }
 
@@ -74,6 +76,7 @@ pre.sample-input, pre.sample-output, pre.ql-syntax {
 .el-table .success {
 background: #f0f9eb;
 }
+
 </style>
 
 <template>
@@ -83,8 +86,8 @@ background: #f0f9eb;
             background-color="#545c64"
             text-color="#fff"
             active-text-color="#ffd04b"
-
-            :default-active="chapter_id + ''"
+            :default-openeds="open_chapters"
+            :default-active="section_id + ''"
           >
               <el-submenu
               v-for="chapter in indexes"
@@ -97,7 +100,8 @@ background: #f0f9eb;
                 <el-menu-item
                         v-for="section in chapter.children"
                         :key="section.id"
-                        :index="section.id"
+                        :index="section.id+''"
+                        :style="section.id == section_id ? 'color: #ffd04b;': ''"
                         @click="openSection(chapter.id, section.id)"
                         >
                     {{ section.title }}
@@ -116,8 +120,6 @@ background: #f0f9eb;
                 :class="'progress-item' + (page_id == item.id ? ' active': '')"
                 :href="'/course/' + course_id + '/c/' + chapter_id + '/s/' + section_id + '/p/' + item.id"
                 >{{ index }}</a>
-
-                <span v-if="index < pages.length - 1"> > </span>
               </span>
               
           </div>
@@ -284,6 +286,8 @@ export default {
               }
           ],
 
+          open_chapters: [],
+
           loading: true,
           indexes: [
           ],
@@ -340,6 +344,9 @@ export default {
       this.chapter_id = document.getElementById('chapter_id').value;
       this.section_id = document.getElementById('section_id').value;
       this.page_id = document.getElementById('page_id').value;
+
+      this.open_chapters.push(this.chapter_id);
+
       let vm = this;
       // 获取章节信息
       axios.get('/course/' + this.course_id + '/indexes')

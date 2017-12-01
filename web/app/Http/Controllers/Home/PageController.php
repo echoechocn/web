@@ -77,6 +77,16 @@ class PageController extends Controller
         return $this->app($data);
     }
 
+    public function history(Request $request, $problem_id){
+        $data = array(
+            'js' => 'js/home/history.js',
+            'data' => array(
+                'problem_id' => $problem_id
+            )
+        );
+        return $this->app($data);
+    }
+
     public function app($data){
         return view('/home/app', $data);
     }

@@ -26,6 +26,8 @@ mix.js('resources/assets/js/app.js', 'public/js')
 
   // www
   .js('resources/assets/js/home/course.js', 'public/js/home')
+  .js('resources/assets/js/home/history.js', 'public/js/home')
+
 
 
   // admin

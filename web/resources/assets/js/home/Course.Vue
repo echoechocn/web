@@ -77,6 +77,13 @@ pre.sample-input, pre.sample-output, pre.ql-syntax {
 background: #f0f9eb;
 }
 
+.contents>div{
+    margin-bottom: 15px;
+}
+.question-title {
+    color: #880000;
+}
+
 </style>
 
 <template>
@@ -135,10 +142,9 @@ background: #f0f9eb;
                 <div v-if="item.type == 1" class="ql-editor image-text" v-html="item.content">
                 </div>
                 <div v-if="item.type == 2" class="program">
-                    <h4>问题标题</h4>
-                    <div class="question-title">
+                    <h3 class="question-title">
                         {{item.title}}
-                    </div>
+                    </h3>
                     <h4>问题描述</h4>
                     <div class="description" v-html="item.description">
                     </div>
@@ -175,6 +181,7 @@ background: #f0f9eb;
                         </el-select>
                         <el-button @click="submitSolution(item)" v-if="item.show_editor" type="primary" size="small" style="margin-top: 10px">提交</el-button>
                         <el-button type="text" @click="item.show_editor = !item.show_editor">{{ item.show_editor ? '取消' : '提交代码' }}</el-button>
+                        <a target="_blank" :href="'/course/history/' + item.id" style="margin-left: 10px;">提交历史</a>
                     </div>
                     <h4>提交结果</h4>
                     <div

@@ -34,6 +34,10 @@ $www_route = function(){
         Route::get('/course/{page_id}/content', 'Home\CourseController@getContent')->where(['page_id' => '[0-9]+']);
         Route::post('/course/solution', 'Home\CourseController@postSolution');
         Route::get('/course/user_problem', 'Home\CourseController@requestUserProblemStatus');
+        Route::get('/course/history/{problem_id}', 'Home\PageController@history');
+        Route::get('/course/h/{problem_id}', 'Home\CourseController@getHistory');
+
+
 
     });
 };

@@ -23,5 +23,6 @@
   "/js/admin/course/program_edit.js": "/js/admin/course/program_edit.js",
   "/js/admin/course/course_content.js": "/js/admin/course/course_content.js",
   "/js/admin/course/content.js": "/js/admin/course/content.js",
-  "/js/home/course.js": "/js/home/course.js"
+  "/js/home/course.js": "/js/home/course.js",
+  "/js/home/history.js": "/js/home/history.js"
 }

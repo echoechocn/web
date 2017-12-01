@@ -219,4 +219,34 @@ class CourseController extends Controller
         )));
     }
 
+    public function getHistory(Request $request, $problem_id){
+        $user_id = $request->session()->get('user_id');
+        $solutions = Solution::where(['user_id' => $user_id, "problem_id" => $problem_id])->orderBy('solution_id', 'desc')->get();
+        $problem = ProgramProblem::find($problem_id);
+        if (null == $problem){
+            return response(json_encode(array(
+                "title" => '不存在',
+                'history' => []
+            )));
+        }
+        $data = array(
+            'title' => $problem->title
+        );
+        $history = [];
+        foreach ($solutions as $solution){
+            $source = SourceCode::find($solution->solution_id);
+            if (null != $source){
+                $history[] = array(
+                    'solution_id' => $solution->solution_id,
+                    'code' => $source->source,
+                    'language' => $solution->language,
+                    'status' => $solution->result,
+                    'create_time' => $solution->in_date
+                );
+            }
+        }
+        $data['history'] = $history;
+        return response(json_encode($data));
+    }
+
 }

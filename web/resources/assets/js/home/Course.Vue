@@ -84,6 +84,11 @@ background: #f0f9eb;
     color: #880000;
 }
 
+.history {
+    text-decoration: none;
+    color: #409ef0;
+}
+
 </style>
 
 <template>
@@ -181,7 +186,7 @@ background: #f0f9eb;
                         </el-select>
                         <el-button @click="submitSolution(item)" v-if="item.show_editor" type="primary" size="small" style="margin-top: 10px">提交</el-button>
                         <el-button type="text" @click="item.show_editor = !item.show_editor">{{ item.show_editor ? '取消' : '提交代码' }}</el-button>
-                        <a target="_blank" :href="'/course/history/' + item.id" style="margin-left: 10px;">提交历史</a>
+                        <a class="history" target="_blank" :href="'/course/history/' + item.id" style="margin-left: 10px;">提交历史</a>
                     </div>
                     <h4>提交结果</h4>
                     <div
